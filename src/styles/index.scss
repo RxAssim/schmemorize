@@ -1,0 +1,232 @@
+$black: #000000;
+$white: #ffffff;
+$blue: #0069ff;
+$red: #ff5252;
+$light-blue: #3287ff;
+$lighter-blue: #2196f3;
+$gray: rgba($black, 0.6);
+$dark-gray: rgba($black, 0.8);
+$max-width: 600px;
+$max-height: 400px;
+$gutters: 24px;
+$semibold: 500;
+$bold: 700;
+$tabletBP: 768px;
+
+@mixin mobile {
+  @media (max-width: $tabletBP) {
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Fira Code", monospace;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  background: $blue;
+}
+
+button {
+  outline: none;
+  background: $blue;
+  width: 100%;
+  border: 0;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  color: $white;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: $semibold;
+  line-height: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  &:hover {
+    background: $light-blue;
+  }
+}
+
+.start {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: $white;
+  width: $max-width;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 2.5rem rgba($black, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+  .form {
+    padding: $gutters;
+    .form-header {
+      margin: 0 0 2.5rem;
+
+      h1 {
+        padding: 0.2rem 0;
+        color: $blue;
+        font-size: 1.5rem;
+        font-weight: $bold;
+        text-transform: uppercase;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 0 1.2rem;
+      label {
+        display: block;
+        margin: 0 0 0.8rem;
+        color: $gray;
+        font-size: 0.8rem;
+        font-weight: $semibold;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+      }
+
+      input {
+        outline: none;
+        display: block;
+        background: rgba($black, 0.1);
+        width: 100%;
+        border: 0;
+        border-radius: 0.3rem;
+        box-sizing: border-box;
+        padding: 1rem;
+        color: $gray;
+        font-size: 1rem;
+        font-weight: $semibold;
+        line-height: inherit;
+        transition: 0.5s ease;
+
+        &:focus {
+          color: $dark-gray;
+        }
+      }
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  .username {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $white;
+    font-size: 2rem;
+  }
+
+  .timer {
+    text-align: center;
+    color: $white;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    &.danger {
+      color: $red;
+    }
+  }
+
+  .board {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    perspective: 1000px;
+    width: 800px;
+    height: 800px;
+
+    @include mobile {
+      width: 400px;
+      height: auto;
+      grid-template-rows: auto;
+    }
+
+    .card {
+      position: relative;
+      transform: scale(1);
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      @include mobile {
+        height: 100px;
+      }
+      &:active {
+        transform: scale(0.97);
+        transition: transform 0.2s;
+      }
+
+      &.flip {
+        transform: rotateY(180deg);
+      }
+
+      .front,
+      .back {
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem;
+        position: absolute;
+        border-radius: 5px;
+        background: $lighter-blue;
+        backface-visibility: hidden;
+      }
+
+      .front {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 1rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include mobile {
+    width: auto;
+  }
+  img {
+    width: 10rem;
+    margin-bottom: 2rem;
+  }
+  p {
+    margin-bottom: 2rem;
+  }
+}

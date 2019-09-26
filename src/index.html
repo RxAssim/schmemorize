@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Schmemory Game</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Code:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="start">
+      <div class="form">
+        <div class="form-header">
+          <h1>Welcome to Schmemorize !</h1>
+        </div>
+        <div class="form-content">
+          <form id="single-player-form">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required="required"
+              />
+            </div>
+            <div class="form-group">
+              <button type="submit">Start</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="container hidden">
+      <h1 class="username"></h1>
+      <h2 class="timer"></h2>
+      <div class="board"></div>
+    </section>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <img src="./public/party.svg" alt="party" />
+        <p>Congrats ! You solved it</p>
+        <button id="restartGame">Restart</button>
+      </div>
+    </div>
+  </body>
+</html>
