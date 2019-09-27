@@ -4,7 +4,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
     "start:client": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
-    "start:server": "cd image-server && yarn start",
+    "start:server": "cd server && yarn start",
     "start": "concurrently \"yarn start:server\" \"yarn start:client\" "
   },
   "author": "Assim ELHAMMOUTI",

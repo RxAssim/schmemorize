@@ -24,4 +24,6 @@ app.get("/svg/:identifier/:size", (req, res) => {
   );
 });
 
+app.use("/", express.static("public"));
+
 app.listen(port, () => console.log(`Image server running on port ${port}`));

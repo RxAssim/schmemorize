@@ -79,11 +79,10 @@ function stopTimer() {
 }
 
 function startGame() {
-  startTimer();
   let downloadedImages = 0;
   NAMES.forEach((name, index) => {
     // For each name, download an image, create 2 cards with that image
-    return fetch(`http://localhost:8111/png/${name}/300`)
+    return fetch(`/png/${name}/300`)
       .then(response => response.blob())
       .then(blob => {
         let reader = new FileReader();
@@ -101,9 +100,11 @@ function startGame() {
             // ALL images are downloaded
             shuffle();
             container.classList.remove("hidden");
+            startTimer();
           }
         };
-      });
+      })
+      .catch(err => console.log(err));
   });
 }
 
