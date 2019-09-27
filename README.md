@@ -13,15 +13,7 @@ yarn
 cd server && yarn
 ```
 
-### Running a local version of the game
-
-From the root of the project:
-
-```bash
-yarn start
-```
-
-## Prod mode
+## Running the game
 
 PS: You should have docker
 
