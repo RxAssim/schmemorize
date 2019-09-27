@@ -2,17 +2,6 @@
 
 Memory game built with vanilla javascript
 
-## Dev mode
-
-### Installing
-
-run the following commands
-
-```bash
-yarn
-cd server && yarn
-```
-
 ## Running the game
 
 PS: You should have docker
