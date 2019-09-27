@@ -10,10 +10,12 @@ run the following commands
 
 ```bash
 yarn
-cd image-server && yarn
+cd server && yarn
 ```
 
 ### Running a local version of the game
+
+From the root of the project:
 
 ```bash
 yarn start
