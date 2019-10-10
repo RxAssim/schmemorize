@@ -1,4 +1,5 @@
-require("../styles/index.scss");
+import "../styles/index.scss";
+import { getImage } from "./utils";
 
 // Used to get the images, 1 image per name
 const NAMES = [
@@ -82,7 +83,7 @@ function startGame() {
   let downloadedImages = 0;
   NAMES.forEach((name, index) => {
     // For each name, download an image, create 2 cards with that image
-    return fetch(`/png/${name}/300`)
+    return getImage(name)
       .then(response => response.blob())
       .then(blob => {
         let reader = new FileReader();
